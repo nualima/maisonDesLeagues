@@ -1,13 +1,13 @@
 <?php
 
+require 'autoload.php';
+require 'vendor/autoload.php';
+
+
 ini_set( 'display_errors', 1 );
 		error_reporting( E_ALL );
     
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
-
-require 'autoload.php';
-require 'vendor/autoload.php';
-
 
 $controllerPath = "controller";
 
