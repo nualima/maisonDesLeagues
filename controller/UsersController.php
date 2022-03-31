@@ -45,6 +45,7 @@ class UsersController extends Controller
     $manager = new UsersManager();
     $listUsers = $manager->getAllListUsers();
 
+
     var_dump($listUsers);
     $data = [
         'listUsers' => $listUsers
@@ -74,6 +75,13 @@ class UsersController extends Controller
         
             if ($result) {
                 $this->listUsersAction();
+                $date = [
+                    "user" => $result
+                ]; 
+                $this->render(
+                    "home", $date
+                );
+
                 
             } else {
                 // TODO: faire une page error
