@@ -1,0 +1,20 @@
+{% extends "pageLayout.twig" %}
+{% block header %}
+
+<ul class="flex">
+  <li class="mr-6">
+    <a class="text-blue-500 hover:text-blue-800" href="./index.php">Acceuil</a>
+  </li>
+  <li class="mr-6">
+    <a class="text-blue-500 hover:text-blue-800" href='./?controller=users&action=listUsers'>Gestion des utilisateurs</a>
+  </li>
+  <li class="mr-6">
+    <a class="text-red-500 hover:text-red-800" href="./index.php">logout</a>
+  </li>
+  <li class="mr-6">
+    <a class="text-gray-400 cursor-not-allowed">user_name</a>
+  </li>
+</ul>
+
+
+{% endblock %}
