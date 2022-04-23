@@ -1,5 +1,7 @@
 <?php
 
+namespace model;
+
 class Users
 {
     public function __construct(array $donnees)

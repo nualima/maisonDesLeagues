@@ -20,7 +20,12 @@ class HomeController extends Controller
         $this->render('home', $data);
 
     }
-
+    
+    public function inscriptionAction()
+    {
+        $data = [];
+        $this->render('inscription', $data);
+    }
 
 
 }

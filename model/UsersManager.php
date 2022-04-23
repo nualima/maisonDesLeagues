@@ -4,12 +4,17 @@ namespace model;
 
 
 use classes\dbConnect;
-use model\users;
+use model\Users;
 use PDO;
+use controller\UsersController;
 
 
 class UsersManager extends Manager
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function add()
     {
     }
@@ -24,24 +29,27 @@ class UsersManager extends Manager
 
         $cpt = $this->manager
             ->db
-            ->query('SELECT COUNT(*) FROM users')->fetchColumn();
+            ->query('SELECT * FROM users')->fetchColumn();
         return $cpt;
     }
 
-    public function getAllListUsersAction()
+    // public function loginAccessAction()
+    // {
+    //     $users = [];
+    //     $q = $this->manager
+    //         ->db
+    //         ->prepare('SELECT * FROM users');
+    //     $q->execute();
+    //     $listRes = $q->fetchAll(\PDO::FETCH_ASSOC);
+    //     return $listRes;
+    // }
+
+
+    public function loginAccessAction()
     {
-        $users = [];
-        $q = $this->manager
-            ->db
-            ->prepare('SELECT * FROM users');
-        $q->execute();
-        $listRes = $q->fetchAll(\PDO::FETCH_ASSOC);
-        return $listRes;
-    }
-    public function getUserAction()
-    {
-        var_dump($_REQUEST);
+        // var_dump($_POST);
         if (isset($_POST['login']) && isset($_POST['password'])) {
+            // var_dump($_REQUEST);
 
 
             $requete = $this->manager
@@ -52,17 +60,11 @@ class UsersManager extends Manager
 
             $requete->execute();
             $result = $requete->fetchAll(\PDO::FETCH_ASSOC);
-            $_SESSION['login'] = $_POST['login'];
-            $_SESSION['password'] = $_POST['password'];
 
-            var_dump($result);
 
-            if ($result) {
-                $this->listUsers();
-            } else {
-                // TODO: faire une page error
-                // header('Location: ../error.php');
-            }
+            // var_dump($result);
+            // $isValid = $this->result; 
+            return ($result);
         }
     }
 }

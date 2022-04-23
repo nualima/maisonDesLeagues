@@ -1,0 +1,31 @@
+{% extends "pageLayout.twig" %}
+{% block body %}
+	<form
+		action='./?controller=inscription&action=default' method='POST' class="flex flex-col space-y-8 mt-10">
+
+		{# <div class="form-floating">
+						        <input type="" name="login" class="form-control" id="floatingInput" placeholder="pseudo">
+						        <label for="floatingInput">nom d'utilisateur</label>
+						    </div>
+						    <div class="form-floating">
+						        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+						        <label for="floatingPassword">Mot de passe</label>
+						    </div> #}
+		<input type="text" placeholder="First name" class="border rounded-lg py-4 px-4 bg-gray-700 border-gray-700 placeholder-gray-500 text-white font-mono text-xl font-bold" name="login"/>
+		<input type="password" placeholder="Last name" class="border rounded-lg py-4 px-4 bg-gray-700 border-gray-700 placeholder-gray-500 text-white" name="password"/>
+		<input type="password" placeholder="Last name" class="border rounded-lg py-4 px-4 bg-gray-700 border-gray-700 placeholder-gray-500 text-white" name="password"/>
+		<input type="submit" class="border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold" value="submit" name"">
+	</form>
+
+	<div class="checkbox mb-3">
+		<label>
+			<input type="checkbox" value="remember-me">
+			Se rappeler de moi
+		</label>
+	</div>
+    <div class="btn btn-primary btn-lg">
+	<a type="submit" class="" href="./?controller=Home&action=default" value="submit" name"">
+		annuler
+	</a>
+    </div>
+</form>{% endblock %}
