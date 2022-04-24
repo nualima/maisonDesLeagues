@@ -27,7 +27,7 @@ class AccueilController extends Controller
         ]; 
 
         if ($isValid) {
-            var_dump($isValid);
+            // var_dump($isValid);
 
                 $_SESSION['login'] = $_POST['login'];
                 $_SESSION['password'] = $_POST['password'];

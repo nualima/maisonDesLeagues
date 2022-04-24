@@ -36,18 +36,18 @@ class InscriptionController extends Controller
 
                 'login' => $_POST['login'],
                 'password' => $_POST['password']
-
             ];
+
             $users = new Users($data);
-            var_dump($users);
             $inscription = new Inscription();
             //si aucune ligne ne remonte 
-            $q = $inscription->inscriptionAction($users);
-            var_dump($q);
+            $userAlreadyExist = $inscription->checkIfUserExist($users);
+            // renvoie par exemple :
+            // object(model\Users)#14 (2) { ["_login"]=> string(3) "aze" ["_password"]=> string(3) "zae" } int(0)
 
 
-            if ($q == 1) {
-                $insterUser = $inscription->userInsertAction($users);
+            if ($userAlreadyExist === false) {
+                $insterUser = $inscription->insertNewUser($users);
                 $data = [];
                 $this->render('accueil', $data);
             } else {
