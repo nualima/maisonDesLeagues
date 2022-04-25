@@ -1,6 +1,7 @@
 {% extends "pageLayout.twig" %}
 {% block body %}
 	<body>
+	
 
 		<!-- noir avec opacité moins forte en background -->
 		<div class="text-white mt-10">
@@ -9,7 +10,7 @@
                 {% include './tableau/tableau.twig' with {'stats': stats} only %}
 
 			<a 	type="submit" 
-				class=" btn btn-primary border border-blue-500 bg-blue-500 text-white rounded-lg py-3 font-semibold "
+				class=" btn btn-primary border border-orange-500 bg-orange-500 text-white rounded-lg py-3 font-semibold w-1/2 text-center  "
 				value="submit" 
 				name""
 			>
@@ -26,7 +27,5 @@
 </ul>
 
 		</div>
-
-
 	{% endblock %}
 

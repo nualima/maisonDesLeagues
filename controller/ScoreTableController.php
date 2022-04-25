@@ -20,6 +20,7 @@ class ScoreTableController extends Controller
 
     public function defaultAction()
     {
+        $condition= true;
         $data = $this->ScoreTableModel
                     ->getScoreTable();
         $this->render('scoreTable', ['stats' => $data]);

@@ -30,7 +30,7 @@
 						{% for stat in stats %}
 							<tr class="bg-gray-900 border-b">
 								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-									{{stat.id + 1 }}
+									{{stat.id}}
 								</td>
 
 								<td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
@@ -38,8 +38,7 @@
 								</td>
 								<td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
 									{{stat.nb_victoire}}
-								</td>
-
+								</td>       
 								<td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
 									{{stat.nb_defaite}}
 								</td>

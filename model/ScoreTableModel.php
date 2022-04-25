@@ -14,7 +14,7 @@ class ScoreTableModel extends Manager
             ->prepare('SELECT * FROM `stats` INNER JOIN `team` ON id = id_team ');
         $q->execute();
         $res = $q -> fetchAll(\PDO::FETCH_ASSOC);
-        var_dump($res);
+        // var_dump($res);
         return $res;
     }
 }
