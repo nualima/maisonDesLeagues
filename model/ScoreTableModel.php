@@ -2,6 +2,7 @@
 
 namespace model;
 
+use model\Stats;
 
 class ScoreTableModel extends Manager
 {
@@ -18,12 +19,15 @@ class ScoreTableModel extends Manager
         return $res;
     }
 
-    public function updateScoreTable(){
+    public function updateScoreTable(Stats $stats){
         $q = $this
             ->manager
             ->db
-            ->prepare('UPDATE `nb_victoire` AND `nb_defaite` FROM `stats` INNER JOIN `team` ON id = id_team Order by nb_victoire Desc');
-        $q->execute();
+            ->prepare('UPDATE `nb_victoire` AND `nb_defaite` SET nb_victoire=:nb_victoire, nb_defaite=:nb_defaite FROM `stats` INNER JOIN `team` ON id = id_team Order by nb_victoire Desc');
+        $q->execute([
+            ':nb_victoire'      => $stats->getNbVictoire(),
+            ':nb_defaite'       => $stats->getNbDefaite()
+        ]);
         $res = $q -> fetchAll(\PDO::FETCH_ASSOC);
         return $res;
     }

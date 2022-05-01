@@ -1,5 +1,10 @@
 {% extends "pageLayout.twig" %}
 {% block body %}
+<div>
+</div>
+
+			{% include './component/usersTable.twig' with {'users': users} only %}
+
 	{% for user in users %}
 		<table>
 
@@ -7,9 +12,9 @@
             <td>{{user.login}}</td>
             
 
-			<td><a href="?controller=users&action=delete&id=' .   $persoInit->getId() . '" class="text-danger">x</a></td>
+			<td><a href="?controller=users&action=delete&id='.$persoInit->getId() . '" class="text-danger">x</a></td>
 						
-			<td><a href="?controller=users&action=edit&id=' .  $persoInit->getId() . '">'modifier '</a></td>
+			<td><a href="?controller=users&action=edit&id='.$persoInit->getId() . '">'modifier '</a></td>
 			
 
 		</table>

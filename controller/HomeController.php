@@ -27,5 +27,11 @@ class HomeController extends Controller
         $this->render('inscription', $data);
     }
 
+    public function connectionAction()
+    {
+        $data= [];
+        $this->render('connection', $data);
+    }
+
 
 }

@@ -2,23 +2,30 @@
 {% block body %}
 	<body>
 
-
 		<!-- noir avec opacité moins forte en background -->
 		<div class="text-white mt-10">
-			<h1 class="font-bold text-4xl">tableau des scores </h1>
+			<h1 class="font-bold text-4xl">tableau des scores
+			</h1>
 
-                {% include './tableau/tableau.twig' with {'stats': stats} only %}
+			{% include './component/scoreTable.twig' with {'stats': stats} only %}
 
-		
 
-<ul>
- 
-       {% for p in data.name %}
-            {{p}}<br/> 
-       {% endfor %}
- 
-</ul>
+			<ul>
+
+				{% for p in data.name %}
+					{{p}}<br/>
+				{% endfor %}
+
+			</ul>
 
 		</div>
-	{% endblock %}
+		{% if users.login is defined %}
 
+			
+			{% include './component/disconnect.twig' with {'users': users} only %}
+
+		{% else %}
+
+			{% include './component/connectionButton.twig' %}
+		{% endif %}
+	{% endblock %}

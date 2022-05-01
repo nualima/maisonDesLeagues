@@ -4,6 +4,10 @@ namespace model;
 
 class Users
 {
+  private $_id,
+          $_user,
+          $_login,
+          $_password;
     public function __construct(array $donnees)
     {
       $this->hydrate($donnees);
@@ -42,6 +46,7 @@ public function hydrate(array $donnees)
     return $this->_password;
   }
 
+  
 
 //SETTER
 
@@ -63,6 +68,7 @@ public function setLogin($login)
       $this->_password = $password;
     }
   }
+
 
 
 

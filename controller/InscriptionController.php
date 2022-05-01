@@ -22,13 +22,6 @@ class InscriptionController extends Controller
     public function defaultAction()
     {
 
-        // $q = $this->inscripton->inscriptionAction();
-        // var_dump($q);
-        // $insert = $this->inscription->userInsertAction();
-
-        // $data = [
-        //     'users' => current($q)
-        // ];
         if (isset($_POST['login']) && $_POST['login'] !== '') {
 
             // var_dump($q);
@@ -54,15 +47,5 @@ class InscriptionController extends Controller
                 $this->render('error', $data);
             }
         }
-        // if ($q) {
-        //     var_dump($q);
-        //     if ($q->fetchColumn() == 0) {
-        //         $this->$insert;
-        //         $_SESSION['pseudo'] = $_POST['identifiant'];
-        //         $this->render('accueil', $data);
-        //     } else {
-        //         $this->render('error', $data);
-        //     }
-        // }
     }
 }

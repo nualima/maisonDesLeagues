@@ -23,14 +23,26 @@ class UsersManager extends Manager
     }
     public function remove()
     {
+        $cpt = $this
+        ->manager
+        ->db
+        ->query('DELETE FROM users WHERE id="$persoInit->getId()" ');
+        $cpt->execute();
+        $res = $cpt -> fetchAll(\PDO::FETCH_ASSOC);
+    // var_dump($res);
+    return $res;
     }
     public function listUsers()
     {
 
-        $cpt = $this->manager
+        $cpt = $this
+            ->manager
             ->db
-            ->query('SELECT * FROM users')->fetchColumn();
-        return $cpt;
+            ->query('SELECT * FROM users');
+        $cpt->execute();
+        $res = $cpt -> fetchAll(\PDO::FETCH_ASSOC);
+        // var_dump($res);
+        return $res;
     }
 
     // public function loginAccessAction()

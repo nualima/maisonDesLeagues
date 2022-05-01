@@ -1,0 +1,149 @@
+<button class="bg-yellow-600 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 mt-1 h-14 text-right" type="button" onclick="toggleModal('modal-id-{{stat.id}}')">
+
+	modal
+
+</button>
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-{{stat.id}}">
+	<div
+		class="relative w-auto my-6 mx-auto max-w-3xl">
+		<!--content-->      
+    <form action="?controller=ScoreTable&action=updateStats" method="post" class="form-example">
+
+		<div
+			class="bg-gray-800 flex flex-col border border-gray-900 rounded-lg px-8 py-10">
+			<!--header-->
+			<div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+				<h3 class="text-3xl font-semibold">
+					Modal Title
+				</h3>
+				<button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="modal-id-{{stat.id}}">
+					<span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"></span>
+				</button>
+			</div>
+			<!--body-->
+
+			<div class="">
+				<table>
+					<thead class="">
+						<tr>
+
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								Equipe
+							</th>
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								V
+							</th>
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								D
+							</th>
+						</tr>
+					</thead>
+					<tbody class="bg-grey-800 border-b	">
+						<tr>
+
+								<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+									<div id="teamName-{{stat.id}}">{{stat.name}}</div>
+								</th>
+								<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left flex">
+									<div>
+										<button id="decrementButton-{{stat.id}}" type="button" class="">
+											<img class="w-4 float-left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABx0lEQVQ4jZWTX0vbUBjGn3Nq2rC0CW5JiyK0A0EEXQUVmZ9ACAw6hIHMfYiCbFfeO/RLqHjhjVKp6P1ARBQnilPE5CYlWTIT/3Rt2pHjhUSkyto+d4fz/n7vw4FD8EL2VbU/KgifuVgsBQC+71v1SmVpZGPjV+MseXo4yOWyryRp7nVX1/u4LIuEUgAACwLcOc71Vam0U3fdr4OFwtEzweHk5Ee5p2fhTTqdealVGEfTNNc08+9WV9cfBQe5XDaZTq83g8PYuq65FxcfssXiMQUAQRTnW4UBQMlk3vKKMgcAkX1V7U/19s7GBIFvVQAAhNLkp3h8jUYTiem4LEvtwACQUBSJl6TpjgjHpcLXBoDo1NR/wdrKykMDQsBxXIpGCAna3R6GEcI6atXqbxYECFuEG5rCjKHu+xatlcvLd45z3e72W9v2/JubZTpcLJ7+MYzddgVXpdKP0a2tMwoA/zxvxtE0rVXY1vVL3zS/AQAFgMFC4cg1zbyt600ltq5feoaRH9rePgEaPtNPVR2IyfL3zu7u8YSiSIQ8XDPGcGvbnmsYO1XLmgnhZ4IwexMTfVFR/MLzfBIAapWK9bdcXhzb3DxvnL0H40SuZF3Y7FYAAAAASUVORK5CYII="/>
+										</button>
+										<input disabled class="w-4 outline-none bg-gray-800" type="text" value="{{stat.nb_victoire}}" name="nbVictoire" id="winStat-{{stat.id}}"/>
+									</div>
+									<button id="incrementButton-{{stat.id}}" type="button" class="">
+										<img class="w-5 float-right" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADmklEQVRoge2ZT0gUYRjGn3dm1oMUhWUgVscUAjts1FnpYjjoamuRBR2iCA26RzBCdI9ayQJPCqWlK7MaXcKzKBRe0mPaH7KiaEl0Z+btYgUz3+zMNzs7BPk7vu/3zjwPO/t+/4Addvi/oTgekh3PqhuadYIVp1VhSjtAMwENBOwCAAaKYHpPxMsO8aJiqy/TSy3zhmE4lb67IgOd+c5DjqP0M3ABxI2S5WsgHrVtNfe8Z3ItqoZIBtrHs/VaqnSbgUsAaqK+fJstEI+Q6twydfOzbLG0AT3feZ6Z7gGok60N4AszDcx0Tz2WKQptID18JdVQvz4E4svy2sLDTMMf1+uvL159WAozPpQB3dRr2VKfAmivSF14Zkmzs6Zu/gwaqAQNSA9fSSUsHgBOs6VOZ8ezgf+vQAMN9etDSFb8b05t1GzdDRpU9hPqmMz0gXg0Pk0RID5X6Jp+4pv2S2QmM/tKxG8A7K+KsPB8Jc1u8muxml+VRXwHEcWbXVPCuJ7PRHlcnWOpgwD6RUnhf6D9WffB7Unqn4CAy7qpHxblhAY04gFUPsPGSQ3byjVRwmPAMAyFifuqr0kSR7mYHc+q7rDHwELL65MADiYiSgbixo1UKe0Oewyw4rQmo0geYmpzxzwGyFGOJyNHHgY8v4CojR4J8zC/Vhm1JkyLJeImd8zbhYgbJHUlBgMebaI2uisBLVHZ7Q4ELub+dUQGiomrCM8Pd8BrgOlDIlIiQIBHm6gLrQA4GvSwcl0j5sXcH5hp2R0TTWQLFb2lioi0eQwotvoyGTnyiLR5DKSXWuYBrCaiSI636aWWRXdQtBp1QDyWjCYpxkRHkcJ5wLbVHICtqksKzyY0KydKCA0875lcA/FIdTVJ8aigF96JEr574tJWzc1UqnQGEfbFlbZLF19Iswf9kr5LiRe9E1+Z6XqcSqLATNfKHfqWXQvNdE89Zqbh+GWFhDg30z01UW5I4GKu1tL6AeRjExUSIp4p7vl+I2hcoIGJ3gmbNLsPwGwsysJRgOr0zrXOWUEDQy2nTd38+eHTgS4QP6hcWwDEueLeb5kwJ9NAhAuOjnznWTDdR/xHjuvM1B/0zbuR3tAUuqafpJiaGRgCsClbL2ATwP1SKdUsKx6o8JKvw+xohK0OgKkPwCHJ8lUAo9CsnN8kFYZYrlkNw1AWjr06TkxtDKSJuImBRvzdXxfBtAZghRVnYfuadTGOa9Yddvjf+QVbQjPmeMg22QAAAABJRU5ErkJggg=="/>
+									</button>
+								</th>
+								<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+									<button id="decrementButtonbis-{{stat.id}}" type="button" class="">
+										<img class="w-4 float-left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABx0lEQVQ4jZWTX0vbUBjGn3Nq2rC0CW5JiyK0A0EEXQUVmZ9ACAw6hIHMfYiCbFfeO/RLqHjhjVKp6P1ARBQnilPE5CYlWTIT/3Rt2pHjhUSkyto+d4fz/n7vw4FD8EL2VbU/KgifuVgsBQC+71v1SmVpZGPjV+MseXo4yOWyryRp7nVX1/u4LIuEUgAACwLcOc71Vam0U3fdr4OFwtEzweHk5Ee5p2fhTTqdealVGEfTNNc08+9WV9cfBQe5XDaZTq83g8PYuq65FxcfssXiMQUAQRTnW4UBQMlk3vKKMgcAkX1V7U/19s7GBIFvVQAAhNLkp3h8jUYTiem4LEvtwACQUBSJl6TpjgjHpcLXBoDo1NR/wdrKykMDQsBxXIpGCAna3R6GEcI6atXqbxYECFuEG5rCjKHu+xatlcvLd45z3e72W9v2/JubZTpcLJ7+MYzddgVXpdKP0a2tMwoA/zxvxtE0rVXY1vVL3zS/AQAFgMFC4cg1zbyt600ltq5feoaRH9rePgEaPtNPVR2IyfL3zu7u8YSiSIQ8XDPGcGvbnmsYO1XLmgnhZ4IwexMTfVFR/MLzfBIAapWK9bdcXhzb3DxvnL0H40SuZF3Y7FYAAAAASUVORK5CYII="/>
+									</button>
+									<input disabled class="w-4 outline-none bg-gray-800" type="text" value="{{stat.nb_defaite}}" name="nbDefaite" id="loseStat-{{stat.id}}"/>
+
+									<button id="incrementButtonbis-{{stat.id}}" type="button" class="">
+										<img class="w-5 float-right" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADmklEQVRoge2ZT0gUYRjGn3dm1oMUhWUgVscUAjts1FnpYjjoamuRBR2iCA26RzBCdI9ayQJPCqWlK7MaXcKzKBRe0mPaH7KiaEl0Z+btYgUz3+zMNzs7BPk7vu/3zjwPO/t+/4Addvi/oTgekh3PqhuadYIVp1VhSjtAMwENBOwCAAaKYHpPxMsO8aJiqy/TSy3zhmE4lb67IgOd+c5DjqP0M3ABxI2S5WsgHrVtNfe8Z3ItqoZIBtrHs/VaqnSbgUsAaqK+fJstEI+Q6twydfOzbLG0AT3feZ6Z7gGok60N4AszDcx0Tz2WKQptID18JdVQvz4E4svy2sLDTMMf1+uvL159WAozPpQB3dRr2VKfAmivSF14Zkmzs6Zu/gwaqAQNSA9fSSUsHgBOs6VOZ8ezgf+vQAMN9etDSFb8b05t1GzdDRpU9hPqmMz0gXg0Pk0RID5X6Jp+4pv2S2QmM/tKxG8A7K+KsPB8Jc1u8muxml+VRXwHEcWbXVPCuJ7PRHlcnWOpgwD6RUnhf6D9WffB7Unqn4CAy7qpHxblhAY04gFUPsPGSQ3byjVRwmPAMAyFifuqr0kSR7mYHc+q7rDHwELL65MADiYiSgbixo1UKe0Oewyw4rQmo0geYmpzxzwGyFGOJyNHHgY8v4CojR4J8zC/Vhm1JkyLJeImd8zbhYgbJHUlBgMebaI2uisBLVHZ7Q4ELub+dUQGiomrCM8Pd8BrgOlDIlIiQIBHm6gLrQA4GvSwcl0j5sXcH5hp2R0TTWQLFb2lioi0eQwotvoyGTnyiLR5DKSXWuYBrCaiSI636aWWRXdQtBp1QDyWjCYpxkRHkcJ5wLbVHICtqksKzyY0KydKCA0875lcA/FIdTVJ8aigF96JEr574tJWzc1UqnQGEfbFlbZLF19Iswf9kr5LiRe9E1+Z6XqcSqLATNfKHfqWXQvNdE89Zqbh+GWFhDg30z01UW5I4GKu1tL6AeRjExUSIp4p7vl+I2hcoIGJ3gmbNLsPwGwsysJRgOr0zrXOWUEDQy2nTd38+eHTgS4QP6hcWwDEueLeb5kwJ9NAhAuOjnznWTDdR/xHjuvM1B/0zbuR3tAUuqafpJiaGRgCsClbL2ATwP1SKdUsKx6o8JKvw+xohK0OgKkPwCHJ8lUAo9CsnN8kFYZYrlkNw1AWjr06TkxtDKSJuImBRvzdXxfBtAZghRVnYfuadTGOa9Yddvjf+QVbQjPmeMg22QAAAABJRU5ErkJggg=="/>
+									</button>
+								</th>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--footer-->
+			<div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+				<button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-{{stat.id}}')">
+					Close
+				</button>
+				<button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit" href="" onclick="" >
+					Save Changes
+				</button>
+        
+			</div>
+		
+    	</div>
+	</form>
+	</div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-{{stat.id}}-backdrop"></div>
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+		function toggleModal(modalID) {
+console.log(modalID);
+document.getElementById(modalID).classList.toggle("hidden");
+document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+document.getElementById(modalID).classList.toggle("flex");
+document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
+
+$("#incrementButton-{{stat.id}}").on("click", function () {
+
+
+var valeur = $("#winStat-{{stat.id}}").val();
+console.log( valeur )
+// recuperer data-val avec evenement (e.)
+let increment = parseInt(valeur);
+let newValeur = increment + 1;
+$("#winStat-{{stat.id}}").val(newValeur);
+// console.log(newValeur);
+
+});
+$("#decrementButton-{{stat.id}}").on("click", function () {
+
+var valeur = $("#winStat-{{stat.id}}").val();
+// console.log( valeur )
+// recuperer data-val avec evenement (e.)
+let decrement = parseInt(valeur);
+let newValeur = decrement - 1;
+$("#winStat-{{stat.id}}").val(newValeur);
+console.log(newValeur);
+
+});
+
+$("#incrementButtonbis-{{stat.id}}").on("click", function () {
+
+var valeur = $("#loseStat-{{stat.id}}").val();
+// console.log( valeur )
+// recuperer data-val avec evenement (e.)
+let increment = parseInt(valeur);
+let newValeur = increment + 1;
+$("#loseStat-{{stat.id}}").val(newValeur);
+console.log(newValeur);
+
+});
+
+$("#decrementButtonbis-{{stat.id}}").on("click", function () {
+
+var valeur = $("#loseStat-{{stat.id}}").val();
+// console.log( valeur )
+// recuperer data-val avec evenement (e.)
+let decrement = parseInt(valeur);
+let newValeur = decrement - 1;
+$("#loseStat-{{stat.id}}").val(newValeur);
+console.log(newValeur);
+
+});
+	</script>
+{% endblock %}
