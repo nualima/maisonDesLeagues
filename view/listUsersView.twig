@@ -5,19 +5,19 @@
 
 			{% include './component/usersTable.twig' with {'users': users} only %}
 
-	{% for user in users %}
+	{# {% for user in users %}
 		<table>
 
 			<td>{{ user.username|e }}</td>
             <td>{{user.login}}</td>
             
 
-			<td><a href="?controller=users&action=delete&id='.$persoInit->getId() . '" class="text-danger">x</a></td>
+			<td><a href="?controller=users&action=delete&id='.$users->getId() . '" class="text-danger">x</a></td>
 						
-			<td><a href="?controller=users&action=edit&id='.$persoInit->getId() . '">'modifier '</a></td>
+			<td><a href="?controller=users&action=edit&id='.$users->getId() . '">'modifier '</a></td>
 			
 
 		</table>
 
-	{% endfor %}
+	{% endfor %} #}
 {% endblock %}

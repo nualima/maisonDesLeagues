@@ -2,10 +2,10 @@
 
 namespace model;
 
+
 class Users
 {
   private $_id,
-          $_user,
           $_login,
           $_password;
     public function __construct(array $donnees)
@@ -50,6 +50,14 @@ public function hydrate(array $donnees)
 
 //SETTER
 
+public function setId($id)
+  {
+    $id = (int) $id;
+    if ($id > 0)
+    {
+      $this->_id = $id;
+    }
+  }
 public function setUsers()
   {
     return $this->_users;

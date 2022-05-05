@@ -7,7 +7,7 @@ use classes\dbConnect;
 use model\Users;
 use PDO;
 use controller\UsersController;
-
+use Users as GlobalUsers;
 
 class UsersManager extends Manager
 {
@@ -18,19 +18,36 @@ class UsersManager extends Manager
     public function add()
     {
     }
-    public function update()
-    {
-    }
-    public function remove()
+    public function update(Users $users)
     {
         $cpt = $this
-        ->manager
-        ->db
-        ->query('DELETE FROM users WHERE id="$persoInit->getId()" ');
-        $cpt->execute();
-        $res = $cpt -> fetchAll(\PDO::FETCH_ASSOC);
-    // var_dump($res);
-    return $res;
+            ->manager
+            ->db
+            ->prepare('UPDATE SET login=:login FROM users WHERE id=:id ');
+        $cpt->execute(
+            [
+                ':id'      => $users->getId(),
+                ':login' => $users->getLogin()
+            ]
+        );
+        $res = $cpt->fetchAll(\PDO::FETCH_ASSOC);
+        var_dump($res);
+        return $res;
+    }
+    public function remove(Users $users)
+    {
+        $cpt = $this
+            ->manager
+            ->db
+            ->prepare('DELETE FROM users WHERE id=:id ');
+        $cpt->execute(
+            [
+                ':id'      => $users->getId()
+            ]
+        );
+        $res = $cpt->fetchAll(\PDO::FETCH_ASSOC);
+        var_dump($res);
+        return $res;
     }
     public function listUsers()
     {
@@ -40,7 +57,7 @@ class UsersManager extends Manager
             ->db
             ->query('SELECT * FROM users');
         $cpt->execute();
-        $res = $cpt -> fetchAll(\PDO::FETCH_ASSOC);
+        $res = $cpt->fetchAll(\PDO::FETCH_ASSOC);
         // var_dump($res);
         return $res;
     }

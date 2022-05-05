@@ -19,7 +19,8 @@ class ScoreTableController extends Controller
 
 
     public function defaultAction()
-    {
+    {        
+
         $data = $this->ScoreTableModel
             ->getScoreTable();
 
@@ -28,9 +29,9 @@ class ScoreTableController extends Controller
 
     }
     
-    public function updateStats()
+    public function updateStatsAction()
     {
-        var_dump($_POST);
+        var_dump($_POST);die();
         if
         (isset($_POST['nbVictoire']) && isset($_POST['nbDefaite']))
 
