@@ -31,7 +31,8 @@ class ScoreTableController extends Controller
     
     public function updateStatsAction()
     {
-        var_dump($_POST);die();
+
+        var_dump($_POST);
         if
         (isset($_POST['nbVictoire']) && isset($_POST['nbDefaite']))
 

@@ -20,6 +20,7 @@ class ScoreTableModel extends Manager
     }
 
     public function updateScoreTable(Stats $stats){
+        
         $q = $this
             ->manager
             ->db
