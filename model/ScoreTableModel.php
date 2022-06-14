@@ -20,16 +20,20 @@ class ScoreTableModel extends Manager
     }
 
     public function updateScoreTable(Stats $stats){
-        
         $q = $this
             ->manager
             ->db
-            ->prepare('UPDATE SET nb_victoire=:nb_victoire, nb_defaite=:nb_defaite FROM `stats` INNER JOIN `team` ON id = id_team Order by nb_victoire Desc');
-        $q->execute([
-            ':nb_victoire'      => $stats->getNbVictoire(),
-            ':nb_defaite'       => $stats->getNbDefaite()
+            ->prepare('UPDATE `stats` SET nb_victoire=:nb_victoire, nb_defaite=:nb_defaite 
+                        WHERE id_team=:id_team AND id_saison=:id_saison');
+
+//var_dump( $stats );die;
+        $res = $q->execute([
+            'id_team'           => $stats->getIdTeam(),
+            'id_saison'         => $stats->getIdSaison(),
+            'nb_victoire'      => $stats->getNbVictoire(),
+            'nb_defaite'       => $stats->getNbDefaite()
         ]);
-        $res = $q -> fetchAll(\PDO::FETCH_ASSOC);
+ //       echo (int)$res;
         return $res;
     }
 } 

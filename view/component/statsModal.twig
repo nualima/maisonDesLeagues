@@ -8,7 +8,8 @@
 		class="relative w-auto my-6 mx-auto max-w-3xl">
 		<!--content-->      
     <form action="./?controller=ScoreTable&action=updateStats" method="post" class="form-example">
-
+            <input type="hidden" value="{{stat.id_team}}" name="idTeam"/>
+            <input type="hidden" value="{{stat.id_saison}}" name="idSaison"/>
 		<div
 			class="bg-gray-800 flex flex-col border border-gray-900 rounded-lg px-8 py-10">
 			<!--header-->

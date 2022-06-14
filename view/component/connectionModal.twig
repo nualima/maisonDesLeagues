@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+{% block javascripts %}
+
+<script type="text/javascript">
+  function toggleModal(modalID){
+    $(modalID).attr('class').toggle("hidden");
+    $(modalID + "-backdrop").attr('class').toggle("hidden");
+    $(modalID).attr('class').toggle("flex");
+    $(modalID + "-backdrop").attr('class').toggle("flex");
+  }
+
+  </script>
+
+  {% endblock %}
+  

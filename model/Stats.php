@@ -64,10 +64,16 @@ public function hydrate(array $donnees)
   }
  }
 
- public function SetNbVictoire($nb_victoire){
+ public function setNbVictoire($nb_victoire){
   if (is_string($nb_victoire))
   {
     $this->_nb_victoire = $nb_victoire;
+  }
+ }
+ public function setNbDefaite($nb_defaite){
+  if (is_string($nb_defaite))
+  {
+    $this->_nb_defaite = $nb_defaite;
   }
  }
 }

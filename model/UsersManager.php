@@ -18,6 +18,22 @@ class UsersManager extends Manager
     public function add()
     {
     }
+
+    public function getUser( $id )
+    {
+        if( isset( $id ) ) {
+            $cpt = $this
+                ->manager
+                ->db
+                ->prepare('SELECT * FROM users WHERE id=:id');
+            $cpt->execute([':id'=>$id]);
+            $res = $cpt->fetchAll(\PDO::FETCH_ASSOC);
+         //var_dump($res);die;
+            return new Users( current( $res ) );
+        } else return false;
+    }
+
+
     public function update(Users $users)
     {
         $cpt = $this
@@ -39,15 +55,8 @@ class UsersManager extends Manager
         $cpt = $this
             ->manager
             ->db
-            ->prepare('DELETE FROM users WHERE id=:id ');
-        $cpt->execute(
-            [
-                ':id'      => $users->getId()
-            ]
-        );
-        $res = $cpt->fetchAll(\PDO::FETCH_ASSOC);
-        var_dump($res);
-        return $res;
+            ->exec('DELETE FROM users WHERE id=' . $users->getId());
+        return $cpt;
     }
     public function listUsers()
     {
@@ -77,23 +86,23 @@ class UsersManager extends Manager
     public function loginAccessAction()
     {
         // var_dump($_POST);
-        if (isset($_POST['login']) && isset($_POST['password'])) {
+        if (isset($_POST['login'])) {
+
             // var_dump($_REQUEST);
 
 
             $requete = $this->manager
                 ->db
-                ->prepare("SELECT * FROM `users` WHERE login=:login AND password=:password ");
+                ->prepare("SELECT * FROM `users` WHERE login=:login ");
             $requete->bindParam(':login', $_POST['login'], PDO::PARAM_STR);
-            $requete->bindParam(':password', $_POST['password'], PDO::PARAM_STR);
 
             $requete->execute();
             $result = $requete->fetchAll(\PDO::FETCH_ASSOC);
 
 
-            // var_dump($result);
+           //var_dump($result);die;
             // $isValid = $this->result; 
-            return ($result);
+            return (current( $result ));
         }
     }
 }

@@ -19,18 +19,22 @@ class AccueilController extends Controller
 
     public function defaultAction()
     {
-        
         $isValid = $this->userManager
             ->loginAccessAction();
+//        echo $isValid['password'];die;
+        $verifepassword = sodium_crypto_pwhash_str_verify($isValid['password'] ,$_POST['password'] );
+
         $data = [
             'users' => current($isValid)
         ];
 
-        if ($isValid) {
+        if ($isValid && $verifepassword == true) {
+            
             // var_dump($isValid);
 
             $_SESSION['login'] = $_POST['login'];
             $_SESSION['password'] = $_POST['password'];
+            $data = ['error'=>false, 'message'=>'Vouss êtes connecté'];
             // $this->listUsers();
             $this->render('home', $data);
             // $this->defaultAction();

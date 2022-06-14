@@ -52,35 +52,39 @@ class UsersController extends Controller
     {
 
         if (isset($_REQUEST['id'])) {
-        $data=[
-            'id'    =>$_REQUEST['id'],
-        ];
-        $user = new Users($data);
-        // var_dump($user);
-        $this->userManager ->remove($user);
-        $this->listUsersAction();
+            $data=[
+                'id'    =>$_REQUEST['id'],
+            ];
+            $user = $this->userManager->getUser( $_REQUEST['id'] );
+            // var_dump($user);
+            if( !empty($user) ) { 
+                if( $this->userManager->remove($user) ) {
+                    $this->listUsersAction();
+                } else {
+                    $this->render("listUsers", ['error'=>true, 'message'=>'Erreur lors de la suppression'] );
+                }
+            }else{
+                $this->render("listUsers", ['error'=>true, 'message'=>'Erreur base de données'] );
+            }
+        } else {
+            $this->render("listUsers", ['error'=>true, 'message'=>'L\'identifiant est absent'] );
         }
-        else{
-            var_dump("ça n'a pas marché");
-        }
-        
-        
-        
-
     }
+
     
     public function listUsersAction()
     {
 
         // var_dump('salut');
         
-        $listUsers = $this->userManager ->listUsers();
-        var_dump($listUsers);
+        $listUsers = $this->userManager->listUsers();
         $data = [
             'users' => $listUsers
         ];
         $this->render("listUsers", $data);
     }
+
+
 
     public function loginAccessAction()
     {

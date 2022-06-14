@@ -1,0 +1,114 @@
+<button 
+class="bg-yellow-600 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 mt-1 h-14 text-right	" 
+type="button" 
+onclick="toggleModal('modal-id')"
+>
+
+  modal
+
+</button>
+<div 
+class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" 
+id="modal-id"
+>
+  <div 
+  class="relative w-auto my-6 mx-auto max-w-3xl"
+  >
+    <!--content-->
+    <div  
+    class="bg-gray-800 flex flex-col border border-gray-900 rounded-lg px-8 py-10">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Modal Title
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="">
+        <table>
+        <thead class="">
+						<tr>
+
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								Equipe
+							</th>
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								V
+							</th>
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								D
+							</th>
+						</tr>
+					</thead>
+          <tbody class="bg-grey-800 border-b	">
+						<tr>
+
+							
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								<div id="teamName">{{stat.name}}</div>
+							</th>
+							<th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+								<div id="winStat"> {{stat.nb_victoire}} </div>  
+                <button id="incrementButton" type="button" class="" 
+                >
+                +
+                </button>
+							</th>
+							<th 
+              scope="col" 
+              class="text-sm font-medium text-white px-6 py-4 text-left"
+              >
+								{{stat.nb_defaite}}
+							</th>
+						</tr>
+					</tbody>
+        </table>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+          Close
+        </button>
+        <button 
+        class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
+        type="button"
+        href="./?controller=ScoreTableController&action=update" 
+        onclick="toggleModal('modal-id')">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+
+{% block javascripts %}
+
+<script type="text/javascript">
+  function toggleModal(modalID){
+    $(modalID).attr('class').toggle("hidden");
+    $(modalID + "-backdrop").attr('class').toggle("hidden");
+    $(modalID).attr('class').toggle("flex");
+    $(modalID + "-backdrop").attr('class').toggle("flex");
+  document.querySelector("#incrementButton").addEventListener("click", function() {
+    
+    
+    console.log('test');
+    var valeur = document.querySelector("#winStat").innerText ;
+    //recuperer data-val avec evenement (e.)
+    var increment = parseInt(valeur) ;
+    var newValeur = increment+ 1;
+    valeur.innerText= newValeur ;
+    console.log(newValeur);
+    
+});
+
+  
+ 
+</script>
+{% endblock %}
